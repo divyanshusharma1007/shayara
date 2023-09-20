@@ -79,7 +79,7 @@ const SignUpScreen = ({navigation}) => {
               </Text>
             </TouchableOpacity>
         </View>
-        <Text
+        {/* <Text
           style={{
             color: 'white',
             textAlign: 'center',
@@ -106,7 +106,7 @@ const SignUpScreen = ({navigation}) => {
               Sign Up with google
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </KeyboardAvoidingView>
       <View style={{position: 'absolute', bottom: 20}}>
         <Text style={{color: 'black', fontWeight: 'bold'}}>

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const category = [
     'shayari',
     'poetry',
@@ -78,7 +78,9 @@ export default function HomeScreen() {
                   backgroundColor: 'white',
                   margin: 10,
                   borderRadius: 2,
-                }}>
+                }}
+                onPress={()=>navigation.navigate('category',{category:e.item})}
+                >
                 <Text style={{color: 'black', fontWeight: 800}}>
                   {String(e.item).toUpperCase()}
                 </Text>

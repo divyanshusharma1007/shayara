@@ -85,7 +85,7 @@ const LoginScreen = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
-        <Text
+        {/* <Text
           style={{
             color: 'white',
             textAlign: 'center',
@@ -113,7 +113,7 @@ const LoginScreen = ({navigation}) => {
               Login in with google
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </KeyboardAvoidingView>
       <View style={{position: 'absolute', bottom: 20}}>
         <Text style={{color: 'black', fontWeight: 'bold'}}>

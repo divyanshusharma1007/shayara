@@ -2,7 +2,7 @@ import {View, Text, SafeAreaView, FlatList, Image,ImageBackground} from 'react-n
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-export default function Category() {
+export default function Category({route}) {
   
   const [data, setData] = useState(
     Array.from({length: 10}, (value, index) => index + 1),
@@ -30,7 +30,7 @@ export default function Category() {
           top: 10,
           left: 10,
         }}>
-        Shyari
+        {route.params.category.slice(0,1).toUpperCase()+route.params.category.slice(1)}
       </Text>
       <SafeAreaView style={{margin: 10, marginTop: 50}}>
         <FlatList
@@ -52,10 +52,11 @@ export default function Category() {
                 }}>
                 <Text
                   style={{
-                    color: 'black',
+                    color: 'white',
                     textAlign: 'center',
                     fontWeight: 800,
                     fontSize: 16,
+                    
                   }}>
                   {
                     'mohabat yu he nahi krte ham ,\n bss mathe par kafan bandhna padhta hai'
