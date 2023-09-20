@@ -32,12 +32,15 @@ const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
   return (
     <>
-      <NavigationContainer>
+      <NavigationContainer
+      >
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
+            animation:'slide_from_left',
+            animationDuration:0.2
           }}
-          initialRouteName='home'>
+          initialRouteName='login'>
           <Stack.Screen name="login" component={LoginScreen} />
           <Stack.Screen name="signup" component={SignUpScreen} />
           <Stack.Screen name="home" component={HomeScreen} />

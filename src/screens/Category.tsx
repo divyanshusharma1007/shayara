@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function Category() {
+  
   const [data, setData] = useState(
     Array.from({length: 10}, (value, index) => index + 1),
   );
@@ -44,14 +45,14 @@ export default function Category() {
               }}>
               <View
                 style={{
-                  height: 650,
+                  height: 640,
                   justifyContent: 'center',
                   alignItems: 'center',
                   overflow: 'scroll',
                 }}>
                 <Text
                   style={{
-                    color: 'white',
+                    color: 'black',
                     textAlign: 'center',
                     fontWeight: 800,
                     fontSize: 16,
@@ -75,9 +76,9 @@ export default function Category() {
                     source={require('../assets/ShayarLogo.png')}
                     style={{height: 25, width: 70}}
                   />
-                  <Text style={{fontSize:10,color:"black"}}>Shyara.in</Text>
+                  <Text style={{fontSize:10,color:"white"}}>Shyara.in</Text>
                 </View>
-                <Icon name="download" size={25} color="black" />
+                <Icon name="download" size={25} color="white" />
               </View>
             </View>
           )}

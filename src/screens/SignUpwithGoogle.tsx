@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import {
   View,
   Text,
@@ -19,24 +18,6 @@ const SignUpScreen = ({navigation}) => {
     // Perform login logic here
     console.log('Username:', username);
     console.log('Password:', password);
-    const options = {
-      method: 'POST',
-      url: 'https://438c-2409-4081-9c8c-7432-50e5-7c0d-57f4-9747.ngrok-free.app/signup',
-      // params: {username: 'divyanshu@gmail.com', password: 'akku'},
-      headers: {Authorization: 'Basic Og=='},
-      data: {username: username, password: password},
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-
-        navigation.navigate('login')
-      })
-      .catch(function (error) {
-       console.log(error.response)
-      });
   };
 
   return (
@@ -53,6 +34,13 @@ const SignUpScreen = ({navigation}) => {
         />
       </View>
       <KeyboardAvoidingView style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="User Name"
+          onChangeText={text => setPassword(text)}
+          value={password}
+          secureTextEntry
+        />
         <TextInput
           style={styles.input}
           placeholder="Email"
