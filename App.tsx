@@ -40,7 +40,7 @@ function App(): JSX.Element {
             animation:'slide_from_left',
             animationDuration:0.2
           }}
-          initialRouteName='login'>
+          initialRouteName='home'>
           <Stack.Screen name="login" component={LoginScreen} />
           <Stack.Screen name="signup" component={SignUpScreen} />
           <Stack.Screen name="home" component={HomeScreen} />
