@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import random
-
+import os
 app = Flask(__name__)
 
 # Sample data (replace this with a database)
@@ -115,4 +115,4 @@ def create_poem():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False,host='0.0.0.0')

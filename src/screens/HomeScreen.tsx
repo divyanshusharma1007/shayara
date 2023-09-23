@@ -5,8 +5,9 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import axios from 'axios';
 
 const category = [
   'shayari',
@@ -20,6 +21,13 @@ const category = [
   'vyang',
 ];
 export default function HomeScreen({navigation}) {
+  const [data,setData]=useState()
+  useEffect(() => {
+
+    axios.get("https://poetry-backend.onrender.com/random-poem").then(data=>{
+      setData(data?.data)
+    }).catch(e=>console.log(e))
+  }, []);
   return (
     <ImageBackground
       source={{
@@ -55,7 +63,8 @@ export default function HomeScreen({navigation}) {
               },
               shadowRadius: 20,
               elevation: 2,
-              shadowOpacity:100
+              shadowOpacity: 100,
+              paddingHorizontal:10
             }}>
             <Text
               style={{
@@ -65,7 +74,7 @@ export default function HomeScreen({navigation}) {
                 fontSize: 15,
               }}>
               {
-                'mohabat ke pakheru is kadar udh gye      \n ki jakham jinda raha bs bande badal gye .'
+                data?.content
               }
             </Text>
           </View>

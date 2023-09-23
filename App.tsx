@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   ImageBackground,
@@ -27,20 +27,21 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import Category from './src/screens/Category';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
+  const [state, setState] = useState('login');
   return (
     <>
-      <NavigationContainer
-      >
+      <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            animation:'slide_from_left',
-            animationDuration:0.2
+            animation: 'slide_from_left',
+            animationDuration: 0.2,
           }}
-          initialRouteName='home'>
+          initialRouteName={state}>
           <Stack.Screen name="login" component={LoginScreen} />
           <Stack.Screen name="signup" component={SignUpScreen} />
           <Stack.Screen name="home" component={HomeScreen} />

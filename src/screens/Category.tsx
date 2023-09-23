@@ -8,22 +8,27 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-
+import axios from 'axios';
 export default function Category({route}) {
-  const [data, setData] = useState(["hello world"]);
+  const [data, setData] = useState([{"category": "poem", "content": `welcome to shyara \n tremendous collection of poems and shayaris `, "title": "mohabat ki baater", "writer": "prachi sharma"}]);
   const [page, setPage] = useState(0);
+  const [hasMore,setHasMore]=useState(true)
   const fetchMore = async () => {
-    const resp = await fetch(
-      ` https://015e-2409-4081-9b12-4e24-8d34-d75d-16c5-f555.ngrok-free.app/poetry?category=${
-        route.params.category
-      }&_limit=1&_page=${page + 1}`,
-    )
-      .then(d => d.json())
-      .then(d => {
-        setData(state => [...state,...d]);
-
-      }).catch(e=>console.log(e,'this is errro'));
-    setPage(state => state + 1);
+    const options = {
+      method: 'GET',
+      url: 'https://poetry-backend.onrender.com/poems',
+      params: {category: route.params.category, page:page+1}
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+      setPage(page+1)
+      setHasMore(response.data.hasMore)
+      setData(state=>[...state,...response.data.poems])
+      console.log(data)
+    }).catch(function (error) {
+      console.error(error);
+    });
   };
   return (
     <ImageBackground
@@ -47,7 +52,7 @@ export default function Category({route}) {
         <SafeAreaView style={{margin: 10, marginTop: 50}}>
           <FlatList
             data={data}
-            onEndReached={fetchMore}
+            onEndReached={hasMore && fetchMore}
             renderItem={item => (
               <View
                 style={{
@@ -64,14 +69,15 @@ export default function Category({route}) {
                   }}>
                   <Text
                     style={{
-                      color: 'white',
+                      color: 'black',
                       textAlign: 'center',
                       fontWeight: 800,
+                      zIndex:10,
+                      opacity:10,
                       fontSize: 16,
+                      paddingHorizontal:10,
                     }}>
-                    {
-                      'mohabat yu he nahi krte ham ,\n bss mathe par kafan bandhna padhta hai'
-                    }
+                    {item.item.content}
                   </Text>
                 </View>
                 <View

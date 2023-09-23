@@ -21,7 +21,7 @@ const SignUpScreen = ({navigation}) => {
     console.log('Password:', password);
     const options = {
       method: 'POST',
-      url: 'https://438c-2409-4081-9c8c-7432-50e5-7c0d-57f4-9747.ngrok-free.app/signup',
+      url: 'https://poetry-backend.onrender.com/signup',
       // params: {username: 'divyanshu@gmail.com', password: 'akku'},
       headers: {Authorization: 'Basic Og=='},
       data: {username: username, password: password},
@@ -30,7 +30,7 @@ const SignUpScreen = ({navigation}) => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        console.log(response.data,'sighnup successfull');
 
         navigation.navigate('login')
       })

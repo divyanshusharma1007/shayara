@@ -11,6 +11,8 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +24,7 @@ const LoginScreen = ({navigation}) => {
 
     const options = {
       method: 'POST',
-      url: 'https://438c-2409-4081-9c8c-7432-50e5-7c0d-57f4-9747.ngrok-free.app/login',
+      url: 'https://poetry-backend.onrender.com/login',
       // params: {username: 'divyanshu@gmail.com', password: 'akku'},
       headers: {Authorization: 'Basic Og=='},
       data: {username: username, password: password},
@@ -30,9 +32,9 @@ const LoginScreen = ({navigation}) => {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then(async function (response) {
         console.log(response.data);
-
+        await AsyncStorage.setItem("user", JSON.stringify(response.data.message))
         navigation.navigate('home')
       })
       .catch(function (error) {
